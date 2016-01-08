@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<center><h1> {{ title }} is working </h1></center>
+	<p> Parent Page </p>
+	<fieldset style="background-color:#FFE7BA;">
+		{% for obj in object_list %}
+		<hr />
+		<center>{{ obj.id }}</center>
+		/posts/id/
+		{% url "posts:detail" id=obj.id %}
+		<a href='{{ obj.get_absolute_url }}' style="color: #00FF00; text-decoration:none;"> {{ obj.title }}</a> <br />
+		{{ obj.content }} <br />
+		{{ obj.timestamp }} <br />
+		{{ obj.updated }} <br />
+
+		{% endfor %}
+	</fieldset>
+	<br />
+	<br />
+	<br />
+
+{% endblock content %}

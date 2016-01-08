@@ -1,0 +1,23 @@
+<hmtl>
+<head> </head>
+
+<body> 
+<h1> {{ title }} is working </h1>
+	
+	<fieldset style="background-color:#FFE7BA">
+		{% for obj in object_list %}
+
+		<hr />
+		<a href='{{ obj.get_absolute_url }}' style="color: #00FF00; text-decoration:none;"> {{ obj.title }}</a> <br />
+		{{ obj.content }} <br />
+		{{ obj.timestamp }} <br />
+		{{ obj.updated }} <br />
+		{{ obj.id }} <br />
+
+		{% endfor %}
+	</fieldset>
+	<br />
+	<br />
+	<br />
+</body>
+</hmtl>

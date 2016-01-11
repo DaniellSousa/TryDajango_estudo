@@ -14,7 +14,7 @@ def post_create(request):
 		instance = form.save(commit=False)
 		print form.cleaned_data.get("title")
 		instance.save()
-		messages.success(request, "Successfully Created")
+		messages.success(request, "Criado com sucesso")
 		return HttpResponseRedirect(instance.get_absolute_url())
 
 	context = {

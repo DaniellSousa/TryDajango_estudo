@@ -1,7 +1,11 @@
+{% load staticfiles %}
+
 <hmtl>
 
 <head>
 <title> {% block head_title %} Try Django 1.9 {% endblock head_title %}</title>
+
+<link rel='stylesheet' href='{% static "css/base.css" %}'/>
 
 <style>
 	{% block style %} {% endblock %}
@@ -18,5 +22,14 @@
 {% endblock content %}
 
 </div>
+<img src ='{% static "img/beach.jpg" %}' />
+
 </body>
 </hmtl>
+
+
+
+
+
+
+

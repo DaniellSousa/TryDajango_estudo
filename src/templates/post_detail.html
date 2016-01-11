@@ -10,7 +10,23 @@
 	{% endif %}
 <h1> {{title}} <small>{{ instance.timestamp }}</small> </h1>
 
+<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+Facebook
+</a>
+
+<a href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20{{ request.build_absolute_uri }}">
+Twitter
+</a>
+
+<a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
+
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title=Be%20first%20%7C%20Join%20Swift%20for%20Entrepreneurs&summary=Swift%20for%20Entrepreneurs%20is%20a%20project-based%20programming%20course%20for%20non-technical%20founders.%20We'll%20learn%20how%20to%20build%20iOS%20apps%20from%20scratch%20using%20Apple's%20new%20programming%20language:%20Swift.%20Be%20first%20and%20learn%20with%20me!&source={{ request.build_absolute_uri }}">
+LinkedIn
+</a>
+
+<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title=Unlock%20to%20Learn%20Swift%20for%20Free!%20By%20Swift%20for%20Entrepreneurs.%20Made%20for%20Non%20Techincals.">Reddit</a>
+
+
 {{ instance.content |linebreaks }} <br />
-</div>
 
 {% endblock content %}

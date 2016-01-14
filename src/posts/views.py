@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 
-# Create your views here.
+from django.utils import timezone
 from .forms import PostForm
 from .models import Post
 
@@ -40,8 +40,8 @@ def post_detail(request, slug=None):
 	return render(request, "post_detail.html", context)
 
 def post_list(request):
-	queryset_list = Post.objects.all() #.order_by("-timestamp")
-	paginator = Paginator(queryset_list, 25)
+	queryset_list = Post.objects.filter(draft=False).filter(publish__lte=timezone.now()) #.all() #.order_by("-timestamp")
+	paginator = Paginator(queryset_list, 10)
 
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
@@ -66,7 +66,7 @@ def post_update(request, slug=None):
 		raise Http404
 
 	instance = get_object_or_404(Post, slug=slug)
-	form = PostForm(request.POST or None, request.FILES or None)
+	form = PostForm(request.POST or None, request.FILES or None, instance = instance)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()

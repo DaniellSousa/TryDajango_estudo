@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
 	<div class='col-sm-6 col-sm-offset-3'>
 	<center><h1> {{ title }} </h1></center>
+
+	<form method='GET' action=''>
+		<input type='text' name= 'q' placeholder='Pesquisar Postagem' value='{{ request.GET.q }}' />
+		<input type='submit' value='Pesquisar' />
+	</form>
 	<fieldset style="background-color:#FFE7BA;">
 		{% for obj in object_list %}
 		<div class="row">
@@ -32,15 +39,15 @@
 		<div class="pagination">
 			<span class="step-links">
 				{% if object_list.has_previous %}
-					<a href="?{{ page_request_var }}={{ object_list.previous_page_number }}">previous</a>
+					<a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&{{ request.GET.q }} {% endif %}">Anterior</a>
 				{% endif %}
 
 				<span class="current">
-					Page {{ object_list.number }} of {{ object_list.paginator.number }}
+					Página {{ object_list.number }} de {{ object_list.paginator.num_pages }}
 				</span>
 
 				{% if object_list.has_next %}
-					<a href="?{{ page_request_var }}={{ object_list.next_page_number }}">Next </a>
+					<a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&{{ request.GET.q }} {% endif %}">Próxima </a>
 				{% endif %}
 			</span>
 		</div>
